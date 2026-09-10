@@ -1,0 +1,5 @@
+*.env
+*.exe
+*.o
+*.pdf
+.vscode/
