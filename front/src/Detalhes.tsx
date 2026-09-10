@@ -1,20 +1,20 @@
 import type { FilmeType } from "./utils/FilmeType"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { useClienteStore } from "./context/ClienteContext"
-import { useForm } from "react-hook-form"
-import { toast } from 'sonner'
+// import { useClienteStore } from "./context/ClienteContext"
+// import { useForm } from "react-hook-form"
+// import { toast } from 'sonner'
 
 const apiUrl = import.meta.env.VITE_API_URL
-type Inputs = {
-  descricao: string
-}
+// type Inputs = {
+//   descricao: string
+// }
 
 export default function Detalhes() {
   const params = useParams()
 
   const [filme, setFilme] = useState<FilmeType>()
-  const { cliente } = useClienteStore()
+//   const { cliente } = useClienteStore()
 
   // const { register, handleSubmit, reset } = useForm<Inputs>()
 

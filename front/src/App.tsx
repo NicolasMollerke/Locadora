@@ -1,6 +1,6 @@
 import { CardFilme } from "./components/CardFilme";
 import Cabecalho from "./components/Cabecalho";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useClienteStore } from "./context/ClienteContext"
 import { useFilmesStore } from "./context/FilmeContext"; 
 
