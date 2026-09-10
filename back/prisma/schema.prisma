@@ -55,7 +55,7 @@ model ListaFilme {
 model Aluguel {
   id            Int      @id @default(autoincrement())
   cliente       Cliente  @relation(fields: [clienteId], references: [id])
-  clienteId     Int      @unique // Lembre-se: com @unique, o cliente só pode ter 1 aluguel na vida. Se quiser histórico, remova o @unique.
+  clienteId     Int      
   filmes        Filme[]
   valor         Decimal  @db.Decimal(10, 2)
   dataInicial   DateTime @default(now())
