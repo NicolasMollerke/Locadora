@@ -35,7 +35,7 @@ const schemaFilme = {
 export async function buscarDadosComGemini(titulo: string, diretor: string, ano: number) {
   const resposta = await ai.models.generateContent({
     model: 'gemini-3.6-flash',
-    contents: `Filme: ${titulo} ${diretor} (${ano}), Liste o genero do filme,  a sinopse oficial, a duração em minutos, os 5 principais atores/atrizes do elenco e a nota respectivamente dos sites Rotten Tomatoes, Letterboxd e IMDB`,
+    contents: `Filme: ${titulo} ${diretor} (${ano}), Liste o genero do filme,  a sinopse oficial completa, a duração em minutos, os 5 principais atores/atrizes do elenco e a nota respectivamente dos sites Rotten Tomatoes, Letterboxd e IMDB`,
     config: {
       responseMimeType: 'application/json',
       responseSchema: schemaFilme,
