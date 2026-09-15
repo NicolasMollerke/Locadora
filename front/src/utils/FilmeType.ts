@@ -12,6 +12,8 @@ export type FilmeType = {
     duracao: number
     preco: number
     poster: string
+    banner: string
+    destaque: boolean
     avaliacoes: number[]
     elenco: string[]
     listas: ListaFilmeType[]
