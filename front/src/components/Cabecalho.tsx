@@ -24,15 +24,11 @@ export default function Cabecalho() {
           <ul className="hidden md:flex items-center gap-6 font-body-md text-body-md">
             <li><a className="text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-200 active:scale-95" href="#">Home</a></li>
             <li><a className="text-on-surface-variant hover:text-primary transition-all duration-300 active:scale-95 hover:scale-105" href="#">Filmes</a></li>
-            <li><a className="text-on-surface-variant hover:text-primary transition-all duration-300 active:scale-95 hover:scale-105" href="#">VHS Classics</a></li>
-            <li><a className="text-on-surface-variant hover:text-primary transition-all duration-300 active:scale-95 hover:scale-105" href="#">Coleções</a></li>
             <li><a className="text-on-surface-variant hover:text-primary transition-all duration-300 active:scale-95 hover:scale-105" href="#">Lançamentos</a></li>
           </ul>
         </div>
         <div className="flex items-center gap-4 justify-center">
-            <InputPesquisa/>
-          <button className="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300"><span className="material-symbols-outlined">notifications</span></button>
-          <button className="text-on-surface-variant hover:text-primary transition-colors hover:scale-105 duration-300"><span className="material-symbols-outlined">person</span></button>
+          <InputPesquisa/>
           <button className="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-2 rounded-lg hover:scale-105 transition-transform duration-300 ml-2 hidden sm:block">Entrar</button>
         </div>
       </nav>
