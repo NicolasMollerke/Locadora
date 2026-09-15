@@ -12,6 +12,8 @@ const filmeSchema = z.object({
   ano: z.number().int().min(1888, { message: "Ano inválido" }),
   preco: z.number().positive({ message: "O preço deve ser maior que zero" }),
   poster: z.string().url({ message: "URL do pôster inválida" }),
+  banner: z.string().url({ message: "URL do banner inválida" }),
+  destaque: z.boolean().default(false),
 })
 
 router.get("/", async (req, res) => {
@@ -44,7 +46,7 @@ router.post("/", async (req, res) => {
     return
   }
 
-  const { titulo, diretor, ano, preco, poster } = valida.data
+  const { titulo, diretor, ano, preco, poster, banner, destaque } = valida.data
 
   try {
     const filme = await prisma.filme.create({
@@ -54,6 +56,8 @@ router.post("/", async (req, res) => {
         ano,
         preco,
         poster,
+        banner,
+        destaque
       }
     })
 
