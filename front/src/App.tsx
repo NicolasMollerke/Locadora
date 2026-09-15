@@ -5,7 +5,7 @@ import { useClienteStore } from "./context/ClienteContext"
 import { useFilmesStore } from "./context/FilmeContext"; 
 
 
-const apiUrl = import.meta.env.VITE_API_URL
+const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";
 
 export default function App() {
   const filmes = useFilmesStore((state) => state.filmes)
