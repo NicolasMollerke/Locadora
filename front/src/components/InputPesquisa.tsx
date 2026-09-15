@@ -27,7 +27,7 @@ export function InputPesquisa() {
     }
 
     return (
-        <div className="flex mx-auto max-w-5xl mt-3 my-auto">
+        <div className="flex mx-auto max-w-5xl my-auto">
             <form className="flex-1" onSubmit={handleSubmit(enviaPesquisa)}>
                 <div className="relative flex items-center bg-surface-container-highest/50 backdrop-blur-md rounded-full px-4 py-2 border border-white/5 focus-within:border-secondary transition-colors">
                     <span className="material-symbols-outlined text-on-surface-variant mr-2">search</span>
