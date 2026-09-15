@@ -21,14 +21,16 @@ model Filme {
   ano         Int           @db.SmallInt
   duracao     Int?           @db.SmallInt
   preco       Decimal       @db.Decimal(10, 2)
+  destaque    Boolean       @default(false)
+  banner      String
   poster      String
   avaliacoes  Float[] 
   elenco      String[]
-  listas      ListaFilme[]
+  carrinhos   Carrinho[]
   alugueis    Aluguel[]
   comentarios Comentario[]
   
-  @@map("filme")
+  @@map("filmes")
 }
 
 model Cliente {
@@ -36,20 +38,20 @@ model Cliente {
   nome        String       @db.VarChar(60)
   email       String       @db.VarChar(40) @unique
   senha       String       @db.VarChar(60) 
-  listaFilmes ListaFilme? 
+  carrinho    Carrinho? 
   alugueis    Aluguel[]
   comentario  Comentario[]
   
   @@map("clientes")
 }
 
-model ListaFilme {
+model Carrinho {
   id        Int     @id @default(autoincrement())
   cliente   Cliente @relation(fields: [clienteId], references: [id])
   clienteId Int     @unique
   filmes    Filme[] 
   
-  @@map("listaFilme")
+  @@map("carrinhos")
 }
 
 model Aluguel {
@@ -67,9 +69,9 @@ model Aluguel {
 model Comentario {
   id        Int     @id @default(autoincrement())
   cliente   Cliente @relation(fields: [clienteId], references: [id])
-  clienteId Int     @unique
+  clienteId Int     
   filme     Filme   @relation(fields: [filmeId], references: [id])
-  filmeId   Int     @unique
+  filmeId   Int     
 
   @@map("comentario")
 }
