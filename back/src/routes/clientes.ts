@@ -10,8 +10,7 @@ const clienteSchema = z.object({
     message: "Nome do cliente deve possuir, no mínimo, 10 caracteres"
   }),
   email: z.string().email({message: "Informe um e-mail válido"}),
-  senha: z.string(),
-  cidade: z.string()
+  senha: z.string()
 })
 
 router.get("/", async (req, res) => {
@@ -105,12 +104,12 @@ router.post("/", async (req, res) => {
   // gera o hash da senha acrescida do salt
   const hash = bcrypt.hashSync(valida.data.senha, salt)
  
-  const { nome, email, cidade } = valida.data
+  const { nome, email } = valida.data
 
   // para o campo senha, atribui o hash gerado
   try {
     const cliente = await prisma.cliente.create({
-      data: { nome, email, senha: hash, cidade }
+      data: { nome, email, senha: hash }
     })
     res.status(201).json(cliente)
   } catch (error) {
@@ -122,7 +121,7 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params
   try {
     const cliente = await prisma.cliente.findUnique({
-      where: { id }
+      where: { id: Number(id) }
     })
     res.status(200).json(cliente)
   } catch (error) {
