@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useClienteStore } from "./context/ClienteContext"
 import { toast } from 'sonner'
 
-const apiUrl = import.meta.env.VITE_API_URL
+const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";
 
 export default function Detalhes() {
 	const params = useParams()
