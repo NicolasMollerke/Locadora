@@ -49,12 +49,12 @@ export default function App() {
     <CardFilme data={filme} key={filme.id} />
   ))
 
-  const listaFilmesDestaque = filmes
-    .filter(filme => filme.destaque === true) 
-    .filter(filme => filmeSorteado ? filme.id !== filmeSorteado.id : true) 
-    .map(filme => (
-      <CardFilme data={filme} key={filme.id} />
-  ));
+  // const listaFilmesDestaque = filmes
+  //   .filter(filme => filme.destaque === true) 
+  //   .filter(filme => filmeSorteado ? filme.id !== filmeSorteado.id : true) 
+  //   .map(filme => (
+  //     <CardFilme data={filme} key={filme.id} />
+  // ));
 
 
   return (
