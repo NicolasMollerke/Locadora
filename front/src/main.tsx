@@ -21,6 +21,7 @@ const rotas = createBrowserRouter([
       { path: 'detalhes/:filmeId', element: <Detalhes /> },
       // { path: 'minhasPropostas', element: <MinhasPropostas /> },
       { path: 'cadCliente', element: <CadCliente /> },
+      { path: 'login', element: <Login /> },
     ],
   },
 ])
