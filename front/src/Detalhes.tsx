@@ -101,12 +101,12 @@ export default function Detalhes() {
 								<div className="font-label-md text-label-md text-on-surface uppercase tracking-widest">Rotten Tomatoes</div>
 							</div>
 							<div className="bg-surface-container-high p-6 rounded-lg border border-white/10 flex flex-col items-center text-center gap-3">
-								<div className="text-primary font-display-lg text-4xl">{filme?.avaliacoes[2]}</div>
-								<div className="font-label-md text-label-md text-on-surface uppercase tracking-widest">IMDb</div>
+								<div className="text-primary font-display-lg text-4xl">{filme?.avaliacoes[1]}</div>
+								<div className="font-label-md text-label-md text-on-surface uppercase tracking-widest">Letterboxd</div>
 							</div>
 							<div className="bg-surface-container-high p-6 rounded-lg border border-white/10 flex flex-col items-center text-center gap-3">
-								<div className="font-display-lg text-4xl font-mono text-on-surface">{filme?.avaliacoes[1]}</div>
-								<div className="font-label-md text-label-md text-on-surface uppercase tracking-widest">Letterboxd</div>
+								<div className="font-display-lg text-4xl font-mono text-on-surface">{filme?.avaliacoes[2]}</div>
+								<div className="font-label-md text-label-md text-on-surface uppercase tracking-widest">IMDB</div>
 							</div>
 						</div>
 					</section>

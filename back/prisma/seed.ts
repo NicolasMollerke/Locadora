@@ -28,7 +28,7 @@ const filmes: Prisma.FilmeCreateManyInput[] = [
         poster: "https://i.ebayimg.com/images/g/T9UAAOSw1m5bBU-5/s-l1200.jpg",
         banner: "https://wallpapers.com/images/featured/buraco-negro-interestelar-6kkuxfcpge3xyspm.jpg",
         destaque: true,
-        avaliacoes: [73, 8.7, 4.3],
+        avaliacoes: [73, 4.3, 8.7],
         elenco: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain", "Michael Caine", "Mackenzie Foy"]
     },
     {
@@ -41,7 +41,7 @@ const filmes: Prisma.FilmeCreateManyInput[] = [
         preco: 12.50,
         poster: "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_.jpg",
         banner: "https://cdn.wallpapersafari.com/1/43/BjRgZo.jpg",
-        avaliacoes: [97, 9.2, 4.6],
+        avaliacoes: [97, 4.6, 9.2],
         elenco: ["Marlon Brando", "Al Pacino", "James Caan", "Robert Duvall", "Diane Keaton"]
     },
     {
@@ -54,7 +54,7 @@ const filmes: Prisma.FilmeCreateManyInput[] = [
         preco: 14.00,
         poster: "https://acdn-us.mitiendanube.com/stores/004/687/740/products/pos-00906-032cbaded0bdc1791917181354309475-1024-1024.webp",
         banner: "https://wallpaperaccess.com/full/683976.jpg",
-        avaliacoes: [83, 8.7, 4.2],
+        avaliacoes: [83, 4.2, 8.7],
         elenco: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss", "Hugo Weaving", "Joe Pantoliano"]
     }
 ];
