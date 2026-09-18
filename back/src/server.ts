@@ -1,5 +1,7 @@
 import express from 'express'
 import cors from 'cors'
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "../swagger-output.json";
 
 import routesFilmes from './routes/filmes'
 import routesClientes from './routes/clientes'
@@ -13,8 +15,10 @@ app.use(cors())
 app.use("/filmes", routesFilmes)
 app.use("/clientes", routesClientes)
 
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.get('/', (req, res) => {
-  res.send('API: Revenda de Veículos')
+  res.send('API: Locadora de Filmes')
 })
 
 app.listen(port, () => {
