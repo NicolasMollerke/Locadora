@@ -1,6 +1,6 @@
-import type { ListaFilmeType } from "./ListaFilmeType"
 import type { AluguelType } from "./AluguelType"
 import type { ComentarioType } from "./ComentarioType"
+import type { CarrinhoType } from "./CarrinhoType"
 
 export type FilmeType = {
     id: number
@@ -16,7 +16,7 @@ export type FilmeType = {
     destaque: boolean
     avaliacoes: number[]
     elenco: string[]
-    listas: ListaFilmeType[]
+    carrinhos: CarrinhoType[]
     alugueis: AluguelType[]
     comentarios: ComentarioType[]
 }
