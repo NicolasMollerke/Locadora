@@ -5,8 +5,8 @@ import './index.css'
 import App from './App.tsx'
 import Login from './Login.tsx'
 import Detalhes from './Detalhes.tsx'
-// import MinhasPropostas from './MinhasPropostas.tsx'
 import CadCliente from './CadCliente.tsx'
+import Carrinho from './Carrinho.tsx'
 
 import Layout from './Layout.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -19,7 +19,7 @@ const rotas = createBrowserRouter([
       { index: true, element: <App /> },
       { path: 'login', element: <Login /> },
       { path: 'detalhes/:filmeId', element: <Detalhes /> },
-      // { path: 'minhasPropostas', element: <MinhasPropostas /> },
+       { path: 'carrinho/:clienteId', element: <Carrinho /> },
       { path: 'cadCliente', element: <CadCliente /> },
       { path: 'login', element: <Login /> },
     ],
