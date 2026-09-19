@@ -109,7 +109,11 @@ router.post("/", async (req, res) => {
   // para o campo senha, atribui o hash gerado
   try {
     const cliente = await prisma.cliente.create({
-      data: { nome, email, senha: hash }
+      data: { nome, email, senha: hash,
+        carrinho: {
+          create: {} 
+        }
+       }
     })
     res.status(201).json(cliente)
   } catch (error) {
@@ -121,11 +125,31 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params
   try {
     const cliente = await prisma.cliente.findUnique({
-      where: { id: Number(id) }
+      where: { id: Number(id) },
+      include: {
+        carrinho: {
+          include: {
+            filmes: true
+          }
+        }
+      },
     })
     res.status(200).json(cliente)
   } catch (error) {
     res.status(400).json(error)
+  }
+})
+
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const cliente = await prisma.cliente.delete({
+      where: { id: Number(id) }
+    })
+    res.status(200).json(cliente)
+  } catch (error) {
+    res.status(400).json({ erro: error })
   }
 })
 
