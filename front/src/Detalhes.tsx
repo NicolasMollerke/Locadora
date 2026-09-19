@@ -13,6 +13,8 @@ export default function Detalhes() {
 	const { cliente, logaCliente } = useClienteStore()
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
+		
 		async function buscaDados() {
 			const response = await fetch(`${apiUrl}/filmes/${params.filmeId}`)
 			const dados = await response.json()
@@ -55,14 +57,18 @@ export default function Detalhes() {
 			<body className="bg-background text-on-background font-body-md min-h-screen relative overflow-x-hidden">
 				<main className="pt-24 md:pt-32 pb-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
 					<section className="flex flex-col md:flex-row gap-12 mb-24 relative">
-						<div className="w-full md:w-1/3 lg:w-1/4 shrink-0 relative group perspective-1000">
-							<div className="relative w-full aspect-[2/3] rounded-lg overflow-hidden border border-white/20 shadow-2xl transition-transform duration-500 transform group-hover:scale-[1.02] bg-surface-container-high">
+						<div className="w-full md:w-1/3 lg:w-1/4 shrink-0 relative group perspective-1000 fga">
+							<div className="flex flex-row relative w-full aspect-[2/3] rounded-lg overflow-hidden border border-white/20 shadow-2xl transition-transform duration-500 transform group-hover:scale-[1.02] bg-surface-container-high">
 								<img className="w-full h-full object-cover" data-alt="" src={filme?.poster} />
 								<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
 							</div>
+								<p className="font-body-md text-body-md text-on-surface leading-loose whitespace-pre-line mt-6">
+									{filme?.elenco?.join('\n')}
+								</p>
 						</div>
 						<div className="w-full md:w-2/3 lg:w-3/4 flex flex-col justify-center">
-							<h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-4 uppercase tracking-wider">{filme?.titulo}</h1>
+							<h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg uppercase tracking-wider">{filme?.titulo}</h1>
+							<p className="mb-2 font-body-lg text-body-lg text-on-surface">{filme?.diretor}</p>
 							<div className="flex flex-wrap gap-4 items-center mb-8 font-label-md text-label-md text-on-surface-variant">
 								<span className="flex items-center gap-1 bg-surface-container-high px-3 py-1 rounded-full border border-white/10"><span className="material-symbols-outlined text-sm">calendar_month</span>{filme?.ano}</span>
 								<span className="flex items-center gap-1 bg-surface-container-high px-3 py-1 rounded-full border border-white/10"><span className="material-symbols-outlined text-sm">schedule</span> {filme?.duracao} MIN</span>
@@ -87,16 +93,6 @@ export default function Detalhes() {
 								)}
 							</div>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/10 pt-8">
-								<div>
-									<h3 className="font-headline-md text-headline-md text-primary mb-3">Diretor</h3>
-									<p className="font-body-lg text-body-lg text-on-surface">{filme?.diretor}</p>
-								</div>
-								<div>
-									<h3 className="font-headline-md text-headline-md text-primary mb-3">Elenco</h3>
-									<p className="font-body-lg text-body-lg text-on-surface leading-loose">
-										{filme?.elenco?.join(', ')}
-									</p>
-								</div>
 							</div>
 						</div>
 					</section>
