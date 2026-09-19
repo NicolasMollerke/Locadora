@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom"
 // import { useClienteStore } from "../context/ClienteContext"
 // import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { InputPesquisa } from "./InputPesquisa"
 
 export default function Cabecalho() {
@@ -29,7 +30,9 @@ export default function Cabecalho() {
         </div>
         <div className="flex items-center gap-4 justify-center">
           <InputPesquisa/>
+          <Link to={`/login`}>
           <button className="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-2 rounded-lg hover:scale-105 transition-transform duration-300 ml-2 hidden sm:block">Entrar</button>
+          </Link>
         </div>
       </nav>
     )
