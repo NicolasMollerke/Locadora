@@ -106,4 +106,27 @@ router.get("/:clienteId", async (req, res) => {
   }
 })
 
+router.delete("/:clienteid/:filmeid", async (req, res) => {
+  const { clienteid, filmeid } = req.params
+
+  try {
+    const carrinhoAtualizado = await prisma.carrinho.update({
+      where: { clienteId: Number(clienteid) },
+      data: {
+        filmes: {
+          disconnect: { id: Number(filmeid) } // <--- Remove a relação sem apagar o filme do banco
+        }
+      },
+      include: {
+        filmes: true // Retorna a nova lista de filmes para atualizar o frontend
+      }
+    })
+
+    res.status(200).json(carrinhoAtualizado)
+  } catch (error) {
+    res.status(400).json({ erro: "Erro ao remover filme do carrinho", detalhe: error })
+  }
+})
+
+
 export default router
