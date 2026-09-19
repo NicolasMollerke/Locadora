@@ -20,7 +20,14 @@ router.post("/", async (req, res) => {
 
   try {
     const cliente = await prisma.cliente.findFirst({
-      where: { email }
+      where: { email },
+      include: {
+        carrinho: {
+          include: {
+            filmes: true // <--- ISSO AQUI É O QUE TRAZ OS ITENS SALVOS ASSIM QUE ELE LOGA!
+          }
+        }
+      }
     })
 
     if (cliente == null) {
@@ -44,7 +51,8 @@ router.post("/", async (req, res) => {
         id: cliente.id,
         nome: cliente.nome,
         email: cliente.email,
-        token
+        token,
+        carrinho: cliente.carrinho
       })
     } else {
       res.status(400).json({ erro: mensaPadrao })
