@@ -16,28 +16,33 @@ export default function Detalhes() {
 		async function buscaDados() {
 			const response = await fetch(`${apiUrl}/filmes/${params.filmeId}`)
 			const dados = await response.json()
-			// console.log(dados)
 			setFilme(dados)
 		}
 		buscaDados()
 	}, [])
 
 	async function adicionaCarrinho() {
-		const response = await fetch(`${apiUrl}/carrinho`, {
+		if (!cliente?.id) {
+			toast.error("Você precisa estar logado para adicionar itens ao carrinho!");
+			return;
+		}
+		
+		const response = await fetch(`${apiUrl}/carrinho/${cliente.id}`, {
 			headers: {
 				"Content-Type": "application/json"
 			},
-			method: "POST",
+			method: "PUT",
 			body: JSON.stringify({
-				clienteId: cliente.id,
-				filmeId: Number(params.filmeId),
+				filmeId: Number(filme?.id),
 			})
 		})
 
-		if (response.status == 201) {
+		const dados = await response.json();
+
+		if (response.ok) {
 			toast.success("Item adicionado no seu carrinho")
 		} else {
-			toast.error("Erro... Não foi possível adicionar o item ao carrinho")
+			toast.error(dados.erro || dados.error || "Erro... Não foi possível adicionar o item ao carrinho");
 		}
 	}
 
