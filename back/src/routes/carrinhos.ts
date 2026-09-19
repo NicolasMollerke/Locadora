@@ -7,8 +7,8 @@ const router = Router()
 
 
 const carrinhoSchema = z.object({
-  clienteid: z.number(),
-  filmeid: z.number()
+  clienteId: z.number().optional(),
+  filmeId: z.number()
 })
 
 
@@ -27,46 +27,6 @@ router.get("/", async (req, res) => {
   }
 })
 
-
-router.post("/", async (req, res) => {
-
-
-  const valida = carrinhoSchema.safeParse(req.body)
-  if (!valida.success) {
-    res.status(400).json({ erro: valida.error })
-    return
-  }
-
-
-  const { clienteid, filmeid } = valida.data
-
-
-  try {
-    const novoCarrinho = await prisma.carrinho.create({
-      data: {
-        clienteId: clienteid,
-        filmes: {
-          connect: { id: filmeid }
-        }
-      },
-      include: {
-        filmes: true
-      }
-    });
-
-
-    return res.status(201).json(novoCarrinho);
-
-
-  } catch (error) {
-    console.error(error);
-    return res.status(400).json({ erro: "Não foi possível processar a requisição." });
-  }
-
-
-})
-
-
 router.delete("/:id", async (req, res) => {
   const { id } = req.params
 
@@ -82,8 +42,8 @@ router.delete("/:id", async (req, res) => {
 })
 
 
-router.put("/:id", async (req, res) => {
-  const { id } = req.params
+router.put("/:clienteid", async (req, res) => {
+  const { clienteid } = req.params
 
 
   const valida = carrinhoSchema.safeParse(req.body)
@@ -93,18 +53,38 @@ router.put("/:id", async (req, res) => {
   }
 
 
-  const { clienteid, filmeid } = valida.data
+  const { filmeId } = valida.data
 
 
   try {
-    const filme = await prisma.filme.update({
-      where: { id: Number(id) },
-      data: {
-        clienteid, filmeid
+    const carrinhoExistente = await prisma.carrinho.findUnique({
+      where: { clienteId: Number(clienteid) },
+      include: {
+        filmes: {
+          where: { id: Number(filmeId) }
+        }
       }
     })
-    res.status(200).json(filme)
+
+    if (carrinhoExistente && carrinhoExistente.filmes.length > 0) {
+      res.status(400).json({ erro: "Este filme já está no seu carrinho!" })
+      return
+    }
+    
+    const carrinho = await prisma.carrinho.update({
+      where: { clienteId: Number(clienteid) },
+      data: {
+        filmes: {
+          connect: { id: Number(filmeId) }
+        }
+      },
+      include: {
+        filmes: true
+      }
+    })
+    res.status(200).json(carrinho)
   } catch (error) {
+    console.error("ERRO AO ADICIONAR FILME NO CARRINHO:");
     res.status(400).json({ error })
   }
 })
