@@ -5,7 +5,7 @@ import type { FilmeType } from "../utils/FilmeType"
 const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";
 
 export function CardDestaque({data}: {data: FilmeType}) {
-  const { cliente } = useClienteStore()
+  const { cliente, logaCliente } = useClienteStore()
   
   async function adicionaCarrinho() {
       if (!cliente?.id) {
@@ -27,6 +27,10 @@ export function CardDestaque({data}: {data: FilmeType}) {
   
       if (response.ok) {
         toast.success("Item adicionado no seu carrinho")
+        logaCliente({
+          ...cliente,
+          carrinho: dados
+    		})
       } else {
         toast.error(dados.erro || dados.error || "Erro... Não foi possível adicionar o item ao carrinho");
       }

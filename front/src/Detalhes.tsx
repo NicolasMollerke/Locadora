@@ -10,7 +10,7 @@ export default function Detalhes() {
 	const params = useParams()
 
 	const [filme, setFilme] = useState<FilmeType>()
-	const { cliente } = useClienteStore()
+	const { cliente, logaCliente } = useClienteStore()
 
 	useEffect(() => {
 		async function buscaDados() {
@@ -41,6 +41,10 @@ export default function Detalhes() {
 
 		if (response.ok) {
 			toast.success("Item adicionado no seu carrinho")
+			logaCliente({
+				...cliente,
+				carrinho: dados
+    		})
 		} else {
 			toast.error(dados.erro || dados.error || "Erro... Não foi possível adicionar o item ao carrinho");
 		}
