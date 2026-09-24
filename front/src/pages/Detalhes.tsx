@@ -1,7 +1,7 @@
-import type { FilmeType } from "./utils/FilmeType"
+import type { FilmeType } from "../utils/FilmeType"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { useClienteStore } from "./context/ClienteContext"
+import { useClienteStore } from "../context/ClienteContext"
 import { toast } from 'sonner'
 
 const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";

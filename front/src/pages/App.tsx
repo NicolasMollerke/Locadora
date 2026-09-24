@@ -1,9 +1,9 @@
-import { CardFilme } from "./components/CardFilme";
-import Cabecalho from "./components/Cabecalho";
+import { CardFilme } from "../components/CardFilme";
+import Cabecalho from "../components/Cabecalho";
 import { useEffect, useState } from "react";
-import { useClienteStore } from "./context/ClienteContext"
-import { useFilmesStore } from "./context/FilmeContext"; 
-import { CardDestaque } from "./components/CardDestaque";
+import { useClienteStore } from "../context/ClienteContext"
+import { useFilmesStore } from "../context/FilmeContext"; 
+import { CardDestaque } from "../components/CardDestaque";
 
 
 const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";

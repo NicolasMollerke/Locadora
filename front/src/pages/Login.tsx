@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import { Link, useNavigate } from "react-router-dom";
 
 import { toast } from "sonner"
-import { useClienteStore } from "./context/ClienteContext"
+import { useClienteStore } from "../context/ClienteContext"
 
 type Inputs = {
     email: string

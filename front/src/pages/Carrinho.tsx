@@ -1,5 +1,5 @@
-import { useClienteStore } from "./context/ClienteContext"
-import { CardFilmeCarrinho } from "./components/CardFilmeCarrinho";
+import { useClienteStore } from "../context/ClienteContext"
+import { CardFilmeCarrinho } from "../components/CardFilmeCarrinho";
 
 
 export default function Carrinho() {
