@@ -1,6 +1,7 @@
 import type { AluguelType } from "./AluguelType"
 import type { ComentarioType } from "./ComentarioType"
 import type { CarrinhoType } from "./CarrinhoType"
+import type { AdminType } from "./AdminType"
 
 export type FilmeType = {
     id: number
@@ -19,4 +20,6 @@ export type FilmeType = {
     carrinhos: CarrinhoType[]
     alugueis: AluguelType[]
     comentarios: ComentarioType[]
+    admin: AdminType
+    adminId: string
 }

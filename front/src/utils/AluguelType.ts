@@ -1,3 +1,4 @@
+import type { AdminType } from "./AdminType"
 import type { ClienteType } from "./ClienteType"
 import type { FilmeType } from "./FilmeType"
 
@@ -9,4 +10,6 @@ export type AluguelType = {
     valor: number
     dataInicial: Date
     dataDevolucao: Date
+    admin: AdminType
+    adminId: String
 }
