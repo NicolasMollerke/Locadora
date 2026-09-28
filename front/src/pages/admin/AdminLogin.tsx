@@ -91,10 +91,10 @@ export default function AdminLogin() {
                                         </button>
                                     </div>
                                 </div>
-                                <Link to={`/admin`} className="w-full mt-2 bg-primary-container hover:bg-inverse-primary text-on-primary-container font-headline-md text-body-md py-3.5 px-6 rounded-lg shadow-xl flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group active:scale-[0.99]" type="submit">
+                                <button className="w-full mt-2 bg-primary-container hover:bg-inverse-primary text-on-primary-container font-headline-md text-body-md py-3.5 px-6 rounded-lg shadow-xl flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer group active:scale-[0.99]" type="submit">
                                     <span>Acessar Painel de Controle</span>
                                     <span className="material-symbols-outlined text-body-md transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
-                                </Link>
+                                </button>
                             </form>
                             <div className="pt-4 flex flex-col gap-4 bg-surface-container-lowest/50 -mx-6 -mb-6 p-6 rounded-b-xl">
                                 <div className="flex items-center justify-center pt-2">
