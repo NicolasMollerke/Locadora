@@ -1,5 +1,4 @@
 import type { AluguelType } from "./AluguelType";
-import type { ClienteType } from "./ClienteType"
 import type { FilmeType } from "./FilmeType"
 
 export type AdminType = {
@@ -12,4 +11,5 @@ export type AdminType = {
   updatedAt: Date;
   filmes: FilmeType[];
   alugueis: AluguelType[];
+  token: string
 };
