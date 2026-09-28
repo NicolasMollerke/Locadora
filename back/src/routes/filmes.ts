@@ -3,6 +3,7 @@ import { buscarDadosComGemini } from '../../services/iaServices'
 
 import { Router } from 'express'
 import { z } from 'zod'
+import { verificaToken } from "../middlewares/verificaToken"
 
 const router = Router()
 
@@ -38,7 +39,7 @@ router.get("/:id", async (req, res) => {
   }
 })
 
-router.post("/", async (req, res) => {
+router.post("/", verificaToken, async (req, res) => {
 
   const valida = filmeSchema.safeParse(req.body)
   if (!valida.success) {
