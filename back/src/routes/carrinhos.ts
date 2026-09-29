@@ -106,6 +106,34 @@ router.get("/:clienteId", async (req, res) => {
   }
 })
 
+router.delete("/:clienteId/limpar", async (req, res) => {
+  const { clienteId } = req.params;
+
+  try {
+    const clienteAtualizado = await prisma.cliente.update({
+      where: { id: Number(clienteId) },
+      data: {
+        carrinho: {
+          update: {
+            filmes: {
+              set: []
+            }
+          }
+        }
+      },
+      include: {
+        carrinho: {
+          include: { filmes: true }
+        }
+      }
+    });
+
+    res.status(200).json(clienteAtualizado.carrinho);
+  } catch (error) {
+    res.status(400).json({ erro: "Erro ao esvaziar carrinho", detalhe: error });
+  }
+});
+
 router.delete("/:clienteid/:filmeid", async (req, res) => {
   const { clienteid, filmeid } = req.params
 
@@ -114,11 +142,11 @@ router.delete("/:clienteid/:filmeid", async (req, res) => {
       where: { clienteId: Number(clienteid) },
       data: {
         filmes: {
-          disconnect: { id: Number(filmeid) } // <--- Remove a relação sem apagar o filme do banco
+          disconnect: { id: Number(filmeid) }
         }
       },
       include: {
-        filmes: true // Retorna a nova lista de filmes para atualizar o frontend
+        filmes: true
       }
     })
 
@@ -127,6 +155,5 @@ router.delete("/:clienteid/:filmeid", async (req, res) => {
     res.status(400).json({ erro: "Erro ao remover filme do carrinho", detalhe: error })
   }
 })
-
 
 export default router
