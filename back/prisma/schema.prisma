@@ -12,6 +12,13 @@ datasource db {
   provider = "postgresql"
 }
 
+enum StatusAluguel {
+  PENDENTE
+  CONCLUIDO
+  ATRASADO
+  CANCELADO
+}
+
 model Filme {
   id          Int           @id @default(autoincrement())
   titulo      String        @db.VarChar(30)
@@ -63,9 +70,10 @@ model Aluguel {
   filmes        Filme[]
   valor         Decimal  @db.Decimal(10, 2)
   dataInicial   DateTime @default(now())
-  dataDevolucao DateTime @default(dbgenerated("NOW() + interval '15 days'"))
+  dataDevolucao DateTime 
   admin       Admin?    @relation(fields: [adminId], references: [id])
   adminId     String?   @db.VarChar(36) 
+  status      StatusAluguel @default(PENDENTE)
   
   @@map("aluguel")
 }
