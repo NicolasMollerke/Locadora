@@ -30,4 +30,38 @@ router.get("/", async (req, res) => {
   }
 })
 
+router.post("/", async (req, res) => {
+  const valida = aluguelSchema.safeParse(req.body)
+  if (!valida.success) {
+    res.status(400).json({ erro: valida.error })
+    return
+  }
+
+  const { clienteId, valor, filmesIds } = valida.data
+
+  const dataDevolucao = new Date()
+  dataDevolucao.setDate(dataDevolucao.getDate() + 7)
+
+  try {
+    const aluguel = await prisma.aluguel.create({
+      data: {
+        clienteId: Number(clienteId),
+        valor: valor,
+        dataDevolucao: dataDevolucao,
+        filmes: {
+          connect: filmesIds.map((id: number) => ({ id: Number(id) }))
+        }
+      },
+      include: {
+        filmes: true,
+        cliente: true
+      }
+    })
+
+    res.status(201).json(aluguel)
+  } catch (error) {
+    res.status(400).json({ erro: "Erro ao registrar aluguel", detalhe: error })
+  }
+})
+
 export default router
