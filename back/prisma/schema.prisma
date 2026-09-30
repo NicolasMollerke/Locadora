@@ -15,8 +15,7 @@ datasource db {
 enum StatusAluguel {
   PENDENTE
   CONCLUIDO
-  ATRASADO
-  CANCELADO
+  ATIVO
 }
 
 model Filme {
