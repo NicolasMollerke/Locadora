@@ -44,9 +44,11 @@ export default function Cabecalho() {
               </span>
             </button>
             <div className="flex items-center gap-3 ml-1">
+              <Link to={`/historicoAlugueis`}>
               <span className="font-label-md text-caption text-on-surface font-semibold leading-tight">
                 {cliente.nome}
               </span>
+              </Link>
               <button onClick={clienteSair}className="flex items-center gap-1.5 px-3 py-1 rounded-full text-caption text-on-surface-variant hover:text-primary hover:border-primary/40 border border-white/10 transition-colors duration-200 active:scale-95">
                 <span className="material-symbols-outlined text-[16px]">logout</span>
                 <span>Sair</span>
