@@ -14,6 +14,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import AdminLogin from './pages/admin/AdminLogin.tsx'
 import AdminLayout from './layouts/AdminLayout.tsx'
 import CadastroFilme from './pages/admin/CadastroFilme.tsx'
+import HistoricoAlugueis from './pages/clientes/HistoricoAlugueis.tsx'
 
 
 const rotas = createBrowserRouter([
@@ -26,6 +27,7 @@ const rotas = createBrowserRouter([
       { path: 'detalhes/:filmeId', element: <Detalhes /> },
        { path: 'carrinho/:clienteId', element: <Carrinho /> },
       { path: 'cadCliente', element: <CadCliente /> },
+      { path: 'historicoAlugueis', element: <HistoricoAlugueis /> },
     ],
   },
   {
