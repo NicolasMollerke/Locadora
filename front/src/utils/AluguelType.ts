@@ -3,6 +3,7 @@ import type { ClienteType } from "./ClienteType"
 import type { FilmeType } from "./FilmeType"
 
 export type AluguelType = {
+    filter(arg0: (aluguel: any) => boolean): unknown
     id: number
     clienteId: number
     cliente: ClienteType
@@ -12,4 +13,5 @@ export type AluguelType = {
     dataDevolucao: Date
     admin: AdminType
     adminId: String
+    status: String
 }
