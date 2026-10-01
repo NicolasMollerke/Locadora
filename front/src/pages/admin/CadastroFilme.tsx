@@ -4,6 +4,7 @@ import { toast } from "sonner"
 import { useAdminStore } from "../../context/AdminContext"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { Link } from "react-router-dom";
 
 const schema = z.object({
     titulo: z.string()
@@ -84,29 +85,20 @@ export default function CadastroFilme() {
             <div className="flex flex-col w-full">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6">
                     <div className="flex flex-col gap-1">
-                        <nav className="flex items-center gap-2 font-caption text-caption text-on-surface-variant">
-                            <a className="hover:text-primary transition-colors flex items-center gap-1" href="#">
-                                <span className="material-symbols-outlined text-[14px]">admin_panel_settings</span>
-                                <span className="">Painel Admin</span>
-                            </a>
-                            <span className="text-on-surface-variant/40">/</span>
-                            <a className="hover:text-primary transition-colors" href="#">Catálogo de Filmes</a>
-                            <span className="text-on-surface-variant/40">/</span>
-                            <span className="text-primary font-semibold">Novo Filme</span>
-                        </nav>
                         <div className="flex items-baseline gap-3 mt-1">
                             <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">Registrar Novo Filme</h1>
-                            <span className="font-caption text-caption px-2.5 py-0.5 rounded-full bg-surface-container-high text-secondary font-mono tracking-wider">MODO: CADASTRO_VHS</span>
                         </div>
                         <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl">
-                            Cadastre fitas VHS e títulos digitais no acervo da locadora com metadados técnicos, inventário e artes de exibição.
+                            Cadastre filmes no acervo da locadora com metadados técnicos, inventário e artes de exibição.
                         </p>
                     </div>
                     <div className="flex items-center gap-3 self-start md:self-auto shrink-0">
+                        <Link to={"/admin"}>
                         <button className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-all" type="button">
                             <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-                            <span className="">Voltar ao Catálogo</span>
+                            <span className="">Voltar a Página Inicial</span>
                         </button>
+                        </Link>
                         <button className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary-container hover:brightness-110 text-on-primary-container font-label-md text-label-md shadow-lg shadow-primary-container/20 transition-all" id="topSaveBtn" type="submit" form="vhsRegisterForm">
                             <span className="material-symbols-outlined text-[18px] animate-pulse">radio_button_checked</span>
                             <span className="">Salvar Filme [REC]</span>
@@ -213,7 +205,7 @@ export default function CadastroFilme() {
                             <div className="flex flex-col gap-2">
                                 <div className="relative flex items-center">
                                     <span className="material-symbols-outlined absolute left-3.5 text-primary text-[20px]">payments</span>
-                                    <input className="w-full pl-11 pr-4 py-3 rounded-lg bg-surface-container text-on-surface placeholder:text-on-surface-variant/50 font-mono font-semibold text-body-md focus:outline-none focus:bg-surface-container-high transition-all ring-1 ring-primary/40 focus:ring-2 focus:ring-primary" id="priceInput" placeholder="R$ 9,90" required type="text"  {...register("preco")}/>
+                                    <input className="w-full pl-11 pr-4 py-3 rounded-lg bg-surface-container text-on-surface placeholder:text-on-surface-variant/50 font-mono font-semibold text-body-md focus:outline-none focus:bg-surface-container-high transition-all ring-1 ring-primary/40 focus:ring-2 focus:ring-primary" id="priceInput" placeholder="R$ 9.90" required type="text"  {...register("preco")}/>
                                 </div>
                             </div>
                         </div>
