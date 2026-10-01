@@ -91,7 +91,9 @@ router.get("/:clienteId", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { id } = req.params
 
-  const updateSchema = aluguelSchema.pick({status: true})
+  const updateSchema = aluguelSchema.pick({ status: true }).extend({
+      dataDevolucao: z.coerce.date().optional()
+    })
   const valida = updateSchema.safeParse(req.body)
 
   if (!valida.success) {
@@ -99,13 +101,14 @@ router.put("/:id", async (req, res) => {
     return
   }
 
-  const { status } = valida.data
+  const { status, dataDevolucao } = valida.data
 
   try {
     const aluguel = await prisma.aluguel.update({
       where: { id: Number(id) },
       data: {
-        status
+        status,
+        dataDevolucao
       }
     })
     res.status(200).json(aluguel)
