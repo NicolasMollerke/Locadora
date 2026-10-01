@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
     return
   }
 
-  const { clienteId, valor, filmesIds } = valida.data
+  const { clienteId, valor, filmesIds, status } = valida.data
 
   const dataDevolucao = new Date()
   dataDevolucao.setDate(dataDevolucao.getDate() + 7)
@@ -56,7 +56,8 @@ router.post("/", async (req, res) => {
         dataDevolucao: dataDevolucao,
         filmes: {
           connect: filmesIds.map((id: number) => ({ id: Number(id) }))
-        }
+        },
+        status: "PENDENTE"
       },
       include: {
         filmes: true,
@@ -89,7 +90,9 @@ router.get("/:clienteId", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { id } = req.params
 
-  const valida = aluguelSchema.safeParse(req.body)
+  const updateSchema = aluguelSchema.pick({status: true})
+  const valida = updateSchema.safeParse(req.body)
+
   if (!valida.success) {
     res.status(400).json({ erro: valida.error })
     return
