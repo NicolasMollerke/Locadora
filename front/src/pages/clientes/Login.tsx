@@ -77,15 +77,11 @@ export default function Login() {
                   <h1 className="font-headline-md text-headline-md text-on-surface tracking-tight">
                     Acessar Ficha de Sócio
                   </h1>
-                  <p className="font-body-md text-caption text-on-surface-variant max-w-xs mt-2 leading-relaxed">
-                    Digite suas credenciais para continuar rebobinando suas memórias cinematográficas.
-                  </p>
                 </div>
                 <form className="flex flex-col gap-5" id="retroLoginForm" onSubmit={handleSubmit(verificaLogin)}>
                   <div className="flex flex-col gap-2 text-left">
                     <label className="font-label-md text-caption uppercase text-on-surface tracking-wider flex items-center justify-between">
-                      <span className="">E-mail ou Código de Sócio</span>
-                      <span className="font-caption text-caption text-on-surface-variant/70 normal-case tracking-normal">Ex: 1994-BR</span>
+                      <span className="">E-mail</span>
                     </label>
                     <div className="relative flex items-center">
                       <span className="material-symbols-outlined text-on-surface-variant absolute left-3.5 text-[20px] pointer-events-none">badge</span>
@@ -95,15 +91,12 @@ export default function Login() {
                   </div>
                   <div className="flex flex-col gap-2 text-left">
                     <label className="font-label-md text-caption uppercase text-on-surface tracking-wider">
-                      Senha Secreta
+                      Senha
                     </label>
                     <div className="relative flex items-center">
                       <span className="material-symbols-outlined text-on-surface-variant absolute left-3.5 text-[20px] pointer-events-none">lock</span>
                       <input className="w-full h-12 pl-11 pr-11 rounded-lg bg-surface-container text-on-surface placeholder:text-on-surface-variant/40 font-body-md text-caption focus:outline-none focus:bg-surface-container-high transition-all tracking-widest" id="passwordField" placeholder="••••••••" required type="password"
                       {...register("senha")}/>
-                      <button aria-label="Alternar exibição da senha" className="absolute right-3 w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors" id="togglePasswordBtn" type="button">
-                        <span className="material-symbols-outlined text-[19px]" id="passwordEyeIcon">visibility</span>
-                      </button>
                     </div>
                   </div>
                   <div className="flex items-center justify-between pt-1 pb-1">
@@ -118,9 +111,6 @@ export default function Login() {
                         Lembrar neste videocassete
                       </span>
                     </label>
-                    <a className="font-label-md text-caption text-secondary hover:text-tertiary-fixed transition-colors" href="#">
-                      Esqueceu a senha?
-                    </a>
                   </div>
                   <button className="w-full h-12 mt-2 rounded-lg bg-primary-container text-on-primary-container font-headline-md text-body-md uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-inverse-primary active:scale-[0.99] transition-all shadow-lg" id="submitButton" type="submit">
                     <span className="material-symbols-outlined text-[20px]">play_circle</span>
@@ -131,11 +121,10 @@ export default function Login() {
                   <div className="flex flex-col items-center gap-3 w-full text-center">
                     <span className="font-body-md text-caption text-on-surface-variant">Ainda não é nosso associado?</span>
                     <Link to={`/cadCliente`}>
-                        <a className="w-full h-11 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface hover:text-primary font-label-md text-label-md transition-all flex items-center justify-center gap-2 shadow-sm border border-outline-variant/30 group active:scale-[0.99]" data-path="criar-carteirinha" href="#">
-                        <span className="material-symbols-outlined text-[18px] text-primary transition-colors">badge</span>
-                        <span className="tracking-wider uppercase font-bold text-caption">Criar Nova Carteirinha </span>
-                        <span className="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary transition-colors">arrow_forward</span>
-                        </a>
+                        <button className=" px-3 w-full h-12 mt-2 rounded-lg bg-primary-container text-on-primary-container font-headline-md text-body-md uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-inverse-primary active:scale-[0.99] transition-all shadow-lg" id="submitButton" type="submit">
+                          <span className="material-symbols-outlined text-[20px]">badge</span>
+                          <span id="buttonText">CRIAR CARTEIRINHA</span>
+                        </button>
                     </Link>
                   </div>
                   <div className="flex items-center justify-center gap-3 pt-2">

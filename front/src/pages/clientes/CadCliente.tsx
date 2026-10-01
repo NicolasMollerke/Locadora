@@ -97,7 +97,6 @@ export default function CadCliente() {
                     <span className="material-symbols-outlined text-secondary absolute -bottom-1 -right-1 text-[16px]">stars</span>
                 </div>
                 <h1 className="font-headline-md text-headline-md text-on-surface tracking-tight">Criar Carteirinha de Sócio</h1>
-                <p className="font-body-md text-caption text-on-surface-variant max-w-xs mt-2 leading-relaxed">Preencha seus dados para começar a alugar clássicos e raridades em VHS.</p>
                 </div>
 
                 <form className="flex flex-col gap-5" id="retroLoginForm" onSubmit={handleSubmit(cadastraCliente)} >
@@ -140,19 +139,6 @@ export default function CadCliente() {
                     <input className="w-full h-12 pl-11 pr-4 rounded-lg bg-surface-container text-on-surface placeholder:text-on-surface-variant/40 font-body-md text-caption focus:outline-none focus:bg-surface-container-high transition-all tracking-widest" id="confirmPasswordField" placeholder="Repita sua senha secreta" required type="password" {...register("senha2")}/>
                     </div>
                 </div>
-
-                <div className="flex items-start gap-2 pt-1 pb-1">
-                    <label className="flex items-start gap-2 cursor-pointer select-none group">
-                    <div className="relative flex items-center justify-center mt-0.5">
-                        <input checked className="peer sr-only" id="acceptTerms" required type="checkbox"/>
-                        <div className="w-4 h-4 rounded bg-surface-container peer-checked:bg-primary-container transition-all flex items-center justify-center shadow-inner">
-                        <span className="material-symbols-outlined text-on-primary-container text-[14px] opacity-0 peer-checked:opacity-100 transition-opacity">check</span>
-                        </div>
-                    </div>
-                    <span className="font-body-md text-caption text-on-surface-variant group-hover:text-on-surface transition-colors leading-tight">Concordo com os Termos do Associado e com a Política de Devolução (e Rebobinamento) de Fitas</span>
-                    </label>
-                </div>
-
                 <button className="w-full h-12 mt-2 rounded-lg bg-primary-container text-on-primary-container font-headline-md text-body-md uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-inverse-primary active:scale-[0.99] transition-all shadow-lg" id="submitButton" type="submit">
                     <span className="material-symbols-outlined text-[20px]">badge</span>
                     <span id="buttonText">CRIAR CARTEIRINHA</span>
@@ -163,7 +149,7 @@ export default function CadCliente() {
                 <div className="flex items-center gap-2 text-center">
                     <span className="font-body-md text-caption text-on-surface-variant">Já possui cadastro?</span>
                     <a className="font-label-md text-caption text-primary-container hover:text-primary font-bold transition-colors inline-flex items-center gap-1" href="#">
-                    Acessar Ficha de Sócio
+                    Faça Login
                     <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
                     </a>
                 </div>
