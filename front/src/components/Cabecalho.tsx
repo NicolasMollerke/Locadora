@@ -26,8 +26,6 @@ export default function Cabecalho() {
           <a className="font-display-lg text-primary tracking-tighter text-3xl md:text-4xl" href="#">CINE RETRO</a>
           <ul className="hidden md:flex items-center gap-6 font-body-md text-body-md">
             <li><Link to={`/`}><a className="text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-200 active:scale-95" href="#">Home</a></Link></li>
-            <li><a className="text-on-surface-variant hover:text-primary transition-all duration-300 active:scale-95 hover:scale-105" href="#">Filmes</a></li>
-            <li><a className="text-on-surface-variant hover:text-primary transition-all duration-300 active:scale-95 hover:scale-105" href="#">Lançamentos</a></li>
           </ul>
         </div>
         <div className="flex items-center gap-4 justify-center">
