@@ -1,6 +1,7 @@
 import { prisma } from "../../lib/prisma"
 import { Router } from "express"
 import { z } from 'zod'
+import { verificaToken } from "../middlewares/verificaToken";
 
 const router = Router()
 export enum StatusAluguel {
@@ -88,6 +89,32 @@ router.get("/:clienteId", async (req, res) => {
 })
 
 router.put("/:id", async (req, res) => {
+  const { id } = req.params
+
+  const updateSchema = aluguelSchema.pick({status: true})
+  const valida = updateSchema.safeParse(req.body)
+
+  if (!valida.success) {
+    res.status(400).json({ erro: valida.error })
+    return
+  }
+
+  const { status } = valida.data
+
+  try {
+    const aluguel = await prisma.aluguel.update({
+      where: { id: Number(id) },
+      data: {
+        status
+      }
+    })
+    res.status(200).json(aluguel)
+  } catch (error) {
+    res.status(400).json({ error })
+  }
+})
+
+router.put("/admin/:id", verificaToken, async (req, res) => {
   const { id } = req.params
 
   const updateSchema = aluguelSchema.pick({status: true})
