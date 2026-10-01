@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner"
 import { useAdminStore } from "../../context/AdminContext";
 
@@ -97,12 +97,14 @@ export default function AdminLogin() {
                                 </button>
                             </form>
                             <div className="pt-4 flex flex-col gap-4 bg-surface-container-lowest/50 -mx-6 -mb-6 p-6 rounded-b-xl">
+                                <Link to={"/"}>
                                 <div className="flex items-center justify-center pt-2">
                                     <a className="inline-flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="javascript:void(0)">
                                         <span className="material-symbols-outlined text-body-md">arrow_back</span>
                                         <span>Voltar para a Loja Pública / Catálogo</span>
                                     </a>
                                 </div>
+                                </Link>
                             </div>
                         </section>
                     </div>
