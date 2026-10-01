@@ -7,7 +7,6 @@ import {
   VictoryBar,
   VictoryAxis
 } from "victory"
-import { useAdminStore } from "../../context/AdminContext"
 
 const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com"
 
@@ -65,7 +64,6 @@ async function buscaJson<T>(rota: string): Promise<T> {
 
 export default function Dashboard() {
   const [dados, setDados] = useState<GeralDadosType | null>(null)
-  const { logaAdmin } = useAdminStore()  
   const [filmesGenero, setFilmesGenero] = useState<GraficoGeneroType[]>([])
   const [alugueisStatus, setAlugueisStatus] = useState<GraficoStatusType[]>([])
   const [alugueisMes, setAlugueisMes] = useState<AlugueisMensalType[]>([])
@@ -73,13 +71,13 @@ export default function Dashboard() {
   const [erro, setErro] = useState<string | null>(null)
 
   useEffect(() => {
-    async function buscaDados() {
+    async function carregaTudo() {
       const [gerais, generos, status, meses] = await Promise.allSettled([
         buscaJson<GeralDadosType>("gerais"),
         buscaJson<GraficoGeneroType[]>("filmesGenero"),
         buscaJson<GraficoStatusType[]>("alugueisStatus"),
         buscaJson<AlugueisMensalType[]>("alugueisMes")
-      ])      
+      ])
 
       const falhas: string[] = []
 
@@ -104,16 +102,7 @@ export default function Dashboard() {
       }
       setCarregando(false)
     }
-    buscaDados()
-    async function buscaAdmin(id: string) {
-      const response = await fetch(`${apiUrl}/admins/${id}`)
-      const dados = await response.json()
-      logaAdmin(dados)
-    }
-    if (localStorage.getItem("clienteKey")) {
-      const idAdmin = localStorage.getItem("clienteKey")
-      buscaAdmin(idAdmin as string)
-    }    
+    carregaTudo()
   }, [])
 
   const dadosGenero = filmesGenero.map((item) => ({ x: item.genero, y: item.num }))

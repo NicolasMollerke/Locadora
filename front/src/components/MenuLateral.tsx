@@ -19,8 +19,6 @@ export function MenuLateral() {
             setFilmes(dados)
         }
         getFilmes()
-
-        getFilmes()
     }, [])
 
     const location = useLocation()
