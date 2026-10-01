@@ -113,9 +113,11 @@ export function MenuLateral() {
                             <span className="font-caption text-caption text-on-surface-variant">Nível {admin.nivel}</span>
                         </div>
                     </div>
+                    <Link to={'/admin/login'}>
                     <a className="w-8 h-8 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-error hover:bg-surface-container-highest transition-colors" data-path="login" href="#" title="Encerrar Turno">
                         <span className="material-symbols-outlined text-[20px]">logout</span>
                     </a>
+                    </Link>
                 </div>
             </div>
         </aside>
