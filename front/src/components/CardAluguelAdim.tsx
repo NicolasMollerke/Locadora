@@ -1,18 +1,20 @@
 import { toast } from "sonner";
 import type { AluguelType } from "../utils/AluguelType"
 import { useAluguelStore } from "../context/AluguelContext";
+import { useAdminStore } from "../context/AdminContext";
 
 const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";
 
 export function CardAluguelAdmin({data}: {data: AluguelType}) {  
     const { atualizarStatusAluguel } = useAluguelStore()    
+    const { admin } = useAdminStore()
     const dataInicialFormatada = new Date(data.dataInicial).toLocaleDateString('pt-BR');
     const dataFinalFormatada = new Date(data.dataDevolucao).toLocaleDateString('pt-BR');
     
     async function confirmarAluguel() { 
-        const response = await fetch(`${apiUrl}/alugueis/${data.id}`, {
-            headers: {
-                "Content-Type": "application/json"
+        const response = await fetch(`${apiUrl}/alugueis/admin/${data.id}`, {
+            headers: { "Content-Type": "application/json",
+                Authorization: `Bearer ${admin.token}`
             },
             method: "PUT",
             body: JSON.stringify({
