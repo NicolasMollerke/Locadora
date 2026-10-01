@@ -36,7 +36,6 @@ export function MenuLateral() {
     const isActive = (path: string) => location.pathname === path
 
     const quantidadeFilmes = filmes.length
-    const quantidadeAlugueis = alugueis.filter((aluguel) => aluguel.status === "PENDENTE").length
     // const quantidadeAlugueis = filmes.filter((filme) => filme.adminId === admin.id).length
     
     return (

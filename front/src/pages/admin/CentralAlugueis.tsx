@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { CardAluguelAdmin } from "../../components/CardAluguelAdim";
 import type { AluguelType } from "../../utils/AluguelType";
-import { useAluguelStore } from "../../context/AluguelContext";
 
 const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";
 
