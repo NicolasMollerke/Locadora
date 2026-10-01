@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import type { FilmeType } from "../utils/FilmeType"
 import { useAdminStore } from "../context/AdminContext"
-import type { AluguelType } from "../utils/AluguelType"
+import { useAluguelStore } from "../context/AluguelContext";
+import { useFilmesStore } from "../context/FilmeContext";
 import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
 
@@ -10,9 +11,8 @@ const apiUrl = import.meta.env.VITE_API_URL
 
 export function MenuLateral() {    
 
-    // const [alugueis, setAlugueis] = useState<AluguelType[]>([])
-
-    const [filmes, setFilmes] = useState<FilmeType[]>([])
+    const { filmes, setFilmes } = useFilmesStore()  
+    const { alugueis, setAlugueis } = useAluguelStore()  
     const { admin } = useAdminStore()
     
     useEffect(() => {
@@ -23,12 +23,13 @@ export function MenuLateral() {
         }
         getFilmes()
 
-        // async function getAlugueis() {
-        //     const response = await fetch(`${apiUrl}/filmes`)
-        //     const dados = await response.json()
-        //     setFilmes(dados)
-        // }
+        async function getAlugueis() {
+            const response = await fetch(`${apiUrl}/alugueis`)
+            const dados = await response.json()
+            setAlugueis(dados)
+        }
         getFilmes()
+        getAlugueis()
     }, [])
 
     const location = useLocation()
@@ -36,6 +37,7 @@ export function MenuLateral() {
     const isActive = (path: string) => location.pathname === path
 
     const quantidadeFilmes = filmes.length
+    const quantidadeAlugueis = alugueis.filter((aluguel) => aluguel.status === "PENDENTE").length
     // const quantidadeAlugueis = filmes.filter((filme) => filme.adminId === admin.id).length
     
     return (
@@ -96,7 +98,7 @@ export function MenuLateral() {
                             <span className="material-symbols-outlined text-[20px]">sync_alt</span>
                             <span>Aluguéis</span>
                         </div>
-                        <span className="px-2 py-0.5 rounded text-caption font-caption bg-secondary-container text-on-secondary-container font-bold">18 pendentes</span>
+                        <span className="px-2 py-0.5 rounded text-caption font-caption bg-secondary-container text-on-secondary-container font-bold">{quantidadeAlugueis} Pendentes</span>
                     </Link>
                 </nav>
             </div>
