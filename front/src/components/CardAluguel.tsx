@@ -9,8 +9,8 @@ export function CardAluguel({data}: {data: AluguelType}) {
     const filmes = data.filmes.length - 1
     const dataInicialFormatada = new Date(data.dataInicial).toLocaleDateString('pt-BR');
     const dataFinalFormatada = new Date(data.dataDevolucao).toLocaleDateString('pt-BR');
-    const filmesTotais = data.filmes.length
-  
+    const dataHoje = new Date();
+
     async function realizarDevolucao() { 
         const response = await fetch(`${apiUrl}/alugueis/${data.id}`, {
             headers: {
@@ -18,7 +18,8 @@ export function CardAluguel({data}: {data: AluguelType}) {
             },
             method: "PUT",
             body: JSON.stringify({
-                status: "CONCLUIDO"
+                status: "CONCLUIDO",
+                dataHoje
             })
         })
 
@@ -64,33 +65,17 @@ export function CardAluguel({data}: {data: AluguelType}) {
                 </div>
 
                 <div className="flex flex-col gap-1.5 min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-label-md text-label-md font-bold text-on-surface tracking-wide flex items-center gap-1">
-                      <span className="material-symbols-outlined text-primary-container text-[18px]">
-                        receipt_long
-                      </span>
-                      #LOC-1994-1022
-                    </span>
-
-                    <span className="px-2.5 py-0.5 rounded bg-primary-container text-on-primary-container text-[11px] font-bold tracking-wider uppercase flex items-center gap-1">
-                      <span className="material-symbols-outlined text-[13px]">
-                        schedule
-                      </span>
-                      Em Andamento • Devolver Hoje
-                    </span>
+                  <div className="flex">
+                    {data.filmes.map((filme, index) => (
+                      <h3
+                        className="font-label-md text-label-md text-on-surface font-bold truncate"
+                        key={filme.id}
+                      >
+                        {filme.titulo}
+                        {index < data.filmes.length - 1 && '\u00A0|\u00A0'}
+                      </h3>
+                    ))}
                   </div>
-                  <h3 className="font-label-md text-label-md text-on-surface font-bold truncate">
-                    {data.filmes[0].titulo}
-                    {filmesTotais > 1 ? (
-                        <div>
-                        {data.filmes.map((filme) => (
-                            <span className="text-on-surface-variant font-normal" key={filme.id}>
-                            {filme.titulo}
-                            </span>
-                        ))}
-                        </div>
-                    ) : null }
-                  </h3>
 
                   <div className="flex flex-wrap items-center gap-3 text-caption font-caption text-on-surface-variant">
                     <span className="">
@@ -109,13 +94,17 @@ export function CardAluguel({data}: {data: AluguelType}) {
               </div>
 
               <div className="flex flex-wrap items-center gap-2.5 shrink-0 pt-3 lg:pt-0 border-t lg:border-t-0 border-surface-container-high">
-                <button
-                  className="px-3.5 py-2 rounded-lg bg-primary-container text-on-primary-container hover:brightness-110 font-label-md text-label-md font-semibold transition-all flex items-center gap-1.5"
-                  type="button"
-                  onClick={realizarDevolucao}
-                >
+                    {data.status === "ATIVO" ? (
+                        <div>
+                          <button
+                          className="px-3.5 py-2 rounded-lg bg-primary-container text-on-primary-container hover:brightness-110 font-label-md text-label-md font-semibold transition-all flex items-center gap-1.5"
+                          type="button"
+                          onClick={realizarDevolucao}
+                          >
                   Realizar Devolução
-                </button>
+                      </button>
+                        </div>
+                    ) : null }
                 <span
                   className="px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-secondary font-label-md text-label-md transition-colors flex items-center gap-1">
                   {data.status}
