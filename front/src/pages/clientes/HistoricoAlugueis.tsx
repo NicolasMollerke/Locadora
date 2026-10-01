@@ -10,6 +10,9 @@ export default function HisotricoAlugueis() {
   const { alugueis, setAlugueis } = useAluguelStore()    
   const { cliente } = useClienteStore()
 
+  const quantidadeAlugueis = alugueis.filter((aluguel) => aluguel.status === "ATIVO").length
+
+
 
   
 
@@ -45,15 +48,6 @@ export default function HisotricoAlugueis() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="flex flex-col gap-2 max-w-3xl">
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-primary-container/20 text-primary-fixed-dim font-caption text-caption tracking-wider uppercase font-semibold">
-                  <span className="material-symbols-outlined text-[14px]">
-                    android_recorder
-                  </span>
-                  Terminal do Associado
-                </span>
-                <span className="text-on-surface-variant font-caption text-caption">
-                  • Registro Ativo #0812
-                </span>
               </div>
               <h1 className="font-headline-lg text-headline-lg md:font-display-lg md:text-display-lg text-on-surface tracking-tight">
                 Histórico de Aluguéis
@@ -71,9 +65,13 @@ export default function HisotricoAlugueis() {
               <h2 className="font-headline-md text-headline-md text-on-surface tracking-tight">
                 Locação Ativa em Andamento
               </h2>
-              <span className="px-2.5 py-0.5 rounded-full bg-primary-container/20 text-primary-fixed-dim font-caption text-caption font-semibold">
-                1 Pedido em Aberto (2 fitas)
-              </span>
+                    {quantidadeAlugueis > 0 ? (
+                    <div>
+                      <span className="px-2.5 py-0.5 rounded-full bg-primary-container/20 text-primary-fixed-dim font-caption text-caption font-semibold">
+                        1 Pedido em Aberto (2 fitas)
+                      </span>
+                    </div>
+                    ) : null }
             </div>
           </div>
             <div className="flex flex-col gap-4">         
@@ -85,9 +83,6 @@ export default function HisotricoAlugueis() {
             <h2 className="font-headline-md text-headline-md text-on-surface tracking-tight">
               Histórico de Pedidos de Locação
             </h2>
-            <span className="font-caption text-caption text-on-surface-variant">
-              Mostrando 3 pedidos concluídos (6 fitas totais)
-            </span>
           </div>
           <div className="flex flex-col gap-4">         
                 {listaAlugueis}
