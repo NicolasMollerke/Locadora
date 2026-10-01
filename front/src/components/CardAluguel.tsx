@@ -1,9 +1,11 @@
 import { toast } from "sonner";
 import type { AluguelType } from "../utils/AluguelType"
+import { useAluguelStore } from "../context/AluguelContext";
 
 const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";
 
 export function CardAluguel({data}: {data: AluguelType}) {  
+    const { atualizarStatusAluguel } = useAluguelStore()    
     const filmes = data.filmes.length - 1
     const dataInicialFormatada = new Date(data.dataInicial).toLocaleDateString('pt-BR');
     const dataFinalFormatada = new Date(data.dataDevolucao).toLocaleDateString('pt-BR');
@@ -24,8 +26,15 @@ export function CardAluguel({data}: {data: AluguelType}) {
 
         if (response.ok) {
             toast.success("Devolução realizada com sucesso!")
+            atualizarStatusAluguel(data.id, "CONCLUIDO");
         } else {
-            toast.error(dados.erro || dados.error || "Erro... Não foi possível realizar a devolução");
+            const erroBackend = dados.erro || dados.error;
+            
+            const mensagemErro = typeof erroBackend === 'object' && erroBackend !== null 
+                ? erroBackend.message || "Erro desconhecido retornado pelo servidor."
+                : erroBackend;
+
+            toast.error(mensagemErro || "Erro... Não foi possível realizar a devolução");
         }
     }
     
