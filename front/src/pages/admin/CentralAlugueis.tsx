@@ -1,13 +1,31 @@
+import { useEffect, useState } from "react";
 import { CardAluguelAdmin } from "../../components/CardAluguelAdim";
+import type { AluguelType } from "../../utils/AluguelType";
 import { useAluguelStore } from "../../context/AluguelContext";
 
+const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com";
 
 export default function CentralAlugueis() {
-    const { alugueis } = useAluguelStore()  
+    const [alugueis, setAlugueis] = useState<AluguelType[]>([])
+        
+    useEffect(() => {
+      async function buscaDados() {
+        try {
+          const response = await fetch(`${apiUrl}/alugueis`);
+          const dados = await response.json();
+  
+          setAlugueis(dados);
+        } catch (error) {
+          console.error("Erro ao buscar alugueis:", error);
+        }
+      }
+  
+      buscaDados();
+    }, []);
 
-    const listaAlugueis = alugueis.map( alugel => (
-        <CardAluguelAdmin data={alugel} key={alugel.id} />
-    ))
+        const listaAlugueis = alugueis.map( alugel => (
+            <CardAluguelAdmin data={alugel} key={alugel.id} />
+        ))
 
   return (
     <div className="bg-surface-container-low rounded-xl shadow-xl overflow-hidden" id="tabela">
