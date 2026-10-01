@@ -7,6 +7,7 @@ import {
   VictoryBar,
   VictoryAxis
 } from "victory"
+import { useClienteStore } from "../../context/ClienteContext"
 
 const apiUrl = import.meta.env.VITE_API_URL || "https://locadora-32js.onrender.com"
 
@@ -64,6 +65,7 @@ async function buscaJson<T>(rota: string): Promise<T> {
 
 export default function Dashboard() {
   const [dados, setDados] = useState<GeralDadosType | null>(null)
+  const { logaCliente } = useClienteStore()  
   const [filmesGenero, setFilmesGenero] = useState<GraficoGeneroType[]>([])
   const [alugueisStatus, setAlugueisStatus] = useState<GraficoStatusType[]>([])
   const [alugueisMes, setAlugueisMes] = useState<AlugueisMensalType[]>([])
@@ -77,7 +79,7 @@ export default function Dashboard() {
         buscaJson<GraficoGeneroType[]>("filmesGenero"),
         buscaJson<GraficoStatusType[]>("alugueisStatus"),
         buscaJson<AlugueisMensalType[]>("alugueisMes")
-      ])
+      ])      
 
       const falhas: string[] = []
 
@@ -103,6 +105,15 @@ export default function Dashboard() {
       setCarregando(false)
     }
     buscaDados()
+    async function buscaCliente(id: string) {
+      const response = await fetch(`${apiUrl}/clientes/${id}`)
+      const dados = await response.json()
+      logaCliente(dados)
+    }
+    if (localStorage.getItem("clienteKey")) {
+      const idCliente = localStorage.getItem("clienteKey")
+      buscaCliente(idCliente as string)
+    }    
   }, [])
 
   const dadosGenero = filmesGenero.map((item) => ({ x: item.genero, y: item.num }))
