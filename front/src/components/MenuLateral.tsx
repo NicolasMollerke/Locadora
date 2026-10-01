@@ -97,7 +97,6 @@ export function MenuLateral() {
                             <span className="material-symbols-outlined text-[20px]">sync_alt</span>
                             <span>Aluguéis</span>
                         </div>
-                        <span className="px-2 py-0.5 rounded text-caption font-caption bg-secondary-container text-on-secondary-container font-bold">{quantidadeAlugueis} Pendentes</span>
                     </Link>
                 </nav>
             </div>
