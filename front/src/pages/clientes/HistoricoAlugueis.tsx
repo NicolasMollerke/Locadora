@@ -42,7 +42,7 @@ export default function HisotricoAlugueis() {
     ))
 
   return (
-    <main className="w-full pt-20 bg-surface min-h-[calc(100vh-280px)]">
+    <main className="w-full pt-20 bg-surface">
       <div className="flex flex-col w-full px-margin-mobile md:px-margin-tablet lg:px-margin-desktop py-8 md:py-12 gap-8 md:gap-12">
         <section className="flex flex-col gap-6">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
