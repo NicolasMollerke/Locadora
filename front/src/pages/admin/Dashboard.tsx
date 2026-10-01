@@ -71,7 +71,7 @@ export default function Dashboard() {
   const [erro, setErro] = useState<string | null>(null)
 
   useEffect(() => {
-    async function carregaTudo() {
+    async function buscaDados() {
       const [gerais, generos, status, meses] = await Promise.allSettled([
         buscaJson<GeralDadosType>("gerais"),
         buscaJson<GraficoGeneroType[]>("filmesGenero"),
@@ -102,7 +102,7 @@ export default function Dashboard() {
       }
       setCarregando(false)
     }
-    carregaTudo()
+    buscaDados()
   }, [])
 
   const dadosGenero = filmesGenero.map((item) => ({ x: item.genero, y: item.num }))
