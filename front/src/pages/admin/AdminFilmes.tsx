@@ -53,61 +53,6 @@ export default function AdminFilmes() {
             </div>
           </div>
         </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 bg-surface-container/60 rounded-lg p-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary">
-              <span className="material-symbols-outlined text-[22px]">video_library</span>
-            </div>
-            <div>
-              <span className="block font-caption text-caption text-on-surface-variant uppercase tracking-wider">
-                Total em Acervo
-              </span>
-              <span className="block font-headline-md text-headline-md text-on-surface font-bold leading-none mt-0.5">
-                1.420
-              </span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-secondary-container">
-              <span className="material-symbols-outlined text-[22px]">shelves</span>
-            </div>
-            <div>
-              <span className="block font-caption text-caption text-on-surface-variant uppercase tracking-wider">
-                Disponíveis
-              </span>
-              <span className="block font-headline-md text-headline-md text-secondary font-bold leading-none mt-0.5">
-                864
-              </span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
-              <span className="material-symbols-outlined text-[22px]">outbox</span>
-            </div>
-            <div>
-              <span className="block font-caption text-caption text-on-surface-variant uppercase tracking-wider">
-                Em Locação
-              </span>
-              <span className="block font-headline-md text-headline-md text-primary font-bold leading-none mt-0.5">
-                526
-              </span>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
-              <span className="material-symbols-outlined text-[22px]">build_circle</span>
-            </div>
-            <div>
-              <span className="block font-caption text-caption text-on-surface-variant uppercase tracking-wider">
-                Revisão/Manut.
-              </span>
-              <span className="block font-headline-md text-headline-md text-on-surface-variant font-bold leading-none mt-0.5">
-                30
-              </span>
-            </div>
-          </div>
-        </div>
         <div className="w-full min-w-0 bg-surface-container-low rounded-xl shadow-md overflow-hidden">
           <table className="w-full table-fixed text-left text-on-surface">
             <thead className="bg-surface-container-lowest text-on-surface-variant uppercase text-caption font-caption tracking-wider">
