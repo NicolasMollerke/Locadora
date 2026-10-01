@@ -63,8 +63,8 @@ export function MenuLateral() {
                 </div>
 
                 <nav className="flex-1 px-4 py-4 space-y-1" data-active-classNamees="text-on-primary-container font-bold rounded-lg shadow-sm">
-                    <Link to={`/admin/dashboards`} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors${
-                        isActive("/admin/dashboards")
+                    <Link to={`/admin`} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors${
+                        isActive("/admin")
                             ? "bg-primary-container text-on-primary-container font-bold shadow-sm"
                             : "text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface"
                     }`}>
