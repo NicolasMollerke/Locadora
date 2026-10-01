@@ -1,6 +1,5 @@
 import { useEffect } from "react"
 import { useAdminStore } from "../context/AdminContext"
-import { useAluguelStore } from "../context/AluguelContext";
 import { useFilmesStore } from "../context/FilmeContext";
 import { useLocation } from "react-router-dom"
 import { Link } from "react-router-dom"
@@ -11,7 +10,6 @@ const apiUrl = import.meta.env.VITE_API_URL
 export function MenuLateral() {    
 
     const { filmes, setFilmes } = useFilmesStore()  
-    const { alugueis, setAlugueis } = useAluguelStore()  
     const { admin } = useAdminStore()
     
     useEffect(() => {
@@ -22,13 +20,7 @@ export function MenuLateral() {
         }
         getFilmes()
 
-        async function getAlugueis() {
-            const response = await fetch(`${apiUrl}/alugueis`)
-            const dados = await response.json()
-            setAlugueis(dados)
-        }
         getFilmes()
-        getAlugueis()
     }, [])
 
     const location = useLocation()
