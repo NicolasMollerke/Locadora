@@ -40,7 +40,8 @@ export default function Carrinho() {
       body: JSON.stringify({
         clienteId: cliente.id,
         valor: valorTotal,
-        filmesIds: filmesIds
+        filmesIds: filmesIds,
+        status: "PENDENTE"
       })
     })
 
