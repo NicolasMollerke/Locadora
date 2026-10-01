@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import type { FilmeType } from "../utils/FilmeType"
+import { useEffect } from "react"
 import { useAdminStore } from "../context/AdminContext"
 import { useAluguelStore } from "../context/AluguelContext";
 import { useFilmesStore } from "../context/FilmeContext";

@@ -1,6 +1,5 @@
 import { CardAluguel } from "../../components/CardAluguel";
-import { useEffect, useState } from "react";
-import type { AluguelType } from "../../utils/AluguelType"
+import { useEffect } from "react";
 import { useClienteStore } from "../../context/ClienteContext";
 import { useAluguelStore } from "../../context/AluguelContext";
 

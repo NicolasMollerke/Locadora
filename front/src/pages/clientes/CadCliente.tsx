@@ -31,7 +31,7 @@ type FormData = z.infer<typeof schema>
 const apiUrl = import.meta.env.VITE_API_URL
 
 export default function CadCliente() {
-    const { register, handleSubmit, setError, formState: { errors } } = useForm<FormData>({
+    const { register, handleSubmit, setError, formState: { } } = useForm<FormData>({
         resolver: zodResolver(schema)  // Validação Zod
     });
 
