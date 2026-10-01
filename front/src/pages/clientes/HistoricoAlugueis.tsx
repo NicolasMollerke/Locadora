@@ -2,13 +2,14 @@ import { CardAluguel } from "../../components/CardAluguel";
 import { useEffect, useState } from "react";
 import type { AluguelType } from "../../utils/AluguelType"
 import { useClienteStore } from "../../context/ClienteContext";
+import { useAluguelStore } from "../../context/AluguelContext";
 
 
 const apiUrl = import.meta.env.VITE_API_URL
 
 export default function HisotricoAlugueis() {
-    const [alugueis, setAlugueis] = useState<AluguelType[]>([])
-    const { cliente } = useClienteStore()
+  const { alugueis, setAlugueis } = useAluguelStore()    
+  const { cliente } = useClienteStore()
 
 
   
