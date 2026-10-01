@@ -10,6 +10,7 @@ import routesCarrinho from './routes/carrinhos'
 import routesAdminLogin from './routes/adminLogin'
 import routesAdmins from './routes/admins'
 import routesAlugueis from './routes/alugueis'
+import routesDashboard from './routes/dashboard'
 
 const app = express()
 const port = 3000
@@ -24,6 +25,8 @@ app.use("/carrinho", routesCarrinho)
 app.use("/admins/login", routesAdminLogin)
 app.use("/admins", routesAdmins)
 app.use("/alugueis", routesAlugueis)
+app.use("/dashboard", routesDashboard)
+
 
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
