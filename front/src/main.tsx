@@ -8,6 +8,7 @@ import CadCliente from './pages/clientes/CadCliente.tsx'
 import Carrinho from './pages/clientes/Carrinho.tsx'
 import AdminFilmes from './pages/admin/AdminFilmes.tsx'
 import CentralAlugueis from './pages/admin/CentralAlugueis.tsx'
+import Dashboard from './pages/admin/Dashboard.tsx'
 import './index.css'
 
 import Layout from './layouts/Layout.tsx'
@@ -35,7 +36,7 @@ const rotas = createBrowserRouter([
     path: '/admin',
     element: <AdminLayout />,
     children: [
-      { index: true, element: <App /> },
+      { index: true, element: <Dashboard /> },
       { path: 'filmes', element: <AdminFilmes /> },
        { path: 'cadastroFilme', element: <CadastroFilme /> },
        { path: 'alugueis', element: <CentralAlugueis /> },
