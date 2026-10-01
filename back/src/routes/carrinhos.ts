@@ -5,7 +5,6 @@ import { z } from 'zod'
 
 const router = Router()
 
-
 const carrinhoSchema = z.object({
   clienteId: z.number().optional(),
   filmeId: z.number()
@@ -46,7 +45,9 @@ router.put("/:clienteid", async (req, res) => {
   const { clienteid } = req.params
 
 
-  const valida = carrinhoSchema.safeParse(req.body)
+  const updateSchema = carrinhoSchema.pick({filmeId: true})
+  const valida = updateSchema.safeParse(req.body)
+
   if (!valida.success) {
     res.status(400).json({ erro: valida.error })
     return
