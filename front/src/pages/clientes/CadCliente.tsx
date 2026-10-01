@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { toast } from "sonner"
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -148,10 +148,12 @@ export default function CadCliente() {
                 <div className="flex flex-col items-center gap-4 mt-8 pt-6 bg-surface-container/30 -mx-8 -mb-8 px-8 pb-8 rounded-b-xl">
                 <div className="flex items-center gap-2 text-center">
                     <span className="font-body-md text-caption text-on-surface-variant">Já possui cadastro?</span>
+                    <Link to={"/login"}>
                     <a className="font-label-md text-caption text-primary-container hover:text-primary font-bold transition-colors inline-flex items-center gap-1" href="#">
                     Faça Login
                     <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
                     </a>
+                    </Link>
                 </div>
                 <div className="flex items-center justify-center gap-3 pt-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
